@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mynews.apps.MynewsConfig',
     'teacher.apps.TeacherConfig',
+    'schedule.apps.ScheduleConfig',
 ]
 
 MIDDLEWARE = [
