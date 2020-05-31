@@ -14,3 +14,6 @@ class Schedule(models.Model):
     title = models.CharField(max_length=100)
     # author = models.ForeignKey(Teacher.full_name, on_delete=models.PROTECT)
     group = models.IntegerField(choices=GROUP)
+
+    def __str__(self):
+        return self.title
