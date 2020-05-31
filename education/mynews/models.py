@@ -16,12 +16,17 @@ class Author(models.Model):
 
 
 class Article(models.Model):
+    TTR_EASY = 1
+    TTR_M_EASY = 2
+    TTR_M = 3
+    TTR_M_H = 4
+    TTR_H = 5
     TIME_TO_READ = (
-        (1, 'easy'),
-        (2, 'medium-easy'),
-        (3, 'medium'),
-        (4, 'medium-hard'),
-        (5, 'hard'),
+        (TTR_EASY, 'easy'),
+        (TTR_M_EASY, 'medium-easy'),
+        (TTR_M, 'medium'),
+        (TTR_M_H, 'medium-hard'),
+        (TTR_H, 'hard'),
     )
 
     title = models.CharField(max_length=50)
@@ -38,4 +43,3 @@ class Article(models.Model):
         if len(self.text) > 30:
             return f'{self.text[:30]}...'
         return self.text
-

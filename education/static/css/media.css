@@ -1,0 +1,51 @@
+/* xs - устройства (до 576px) */
+/* CSS для ширины, которая меньше 575px (включительно) */
+
+/* sm-устройства (больше или равно 576px) */
+@media (min-width: 576px) {
+	nav>a{
+		color: #927700;
+	}
+	.btn-primary{
+		color: # 232323;
+		width:50%;
+		padding: 0 5%;
+	}
+	ul.ul-width{
+	width:50%;
+	margin:0 auto;
+	}
+
+  /* CSS для: 576px <= ширины <= 767px */
+}
+/* md-устройства (больше или равно 768px) */
+@media (min-width: 767.98px) {
+    ul.ul-width{
+    width:40%;
+	}
+
+  /* CSS для: 768px <= ширины <= 991px */
+}
+/* lg-устройства (больше или равно 992px) */
+@media (min-width: 992px) {
+/* CSS для: 992px <= ширины <= 1119px */
+    ul.ul-width{
+        width:40%;
+        float: left;
+	}
+	h1>a{
+		color: #007bff;
+	}
+
+}
+/* xl-устройства (больше или равно 1200px) */
+@media (min-width: 1200px) {
+/* CSS для: ширины >= 1200px */
+	h1>a{
+		color: #007bff;
+	}
+	ul.ul-width{
+	width:25%;
+	}
+
+}
