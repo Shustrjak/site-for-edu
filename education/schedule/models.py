@@ -1,11 +1,16 @@
 from django.db import models
 
 class Schedule(models.Model):
+    garden = 1
+    farm = 2
+    animal = 3
+    pets = 4
+
     GROUP = (
-        (1, 'garden'),
-        (2, 'farm'),
-        (3, 'animal'),
-        (4, 'pets'),
+        (garden, 'garden'),
+        (farm, 'farm'),
+        (animal, 'animal'),
+        (pets, 'pets'),
     )
     date = models.DateTimeField()
     title = models.CharField(max_length=100)
