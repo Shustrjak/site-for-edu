@@ -1,5 +1,4 @@
 from django.db import models
-# from education.teacher.models import Teacher
 
 class Schedule(models.Model):
     GROUP = (
@@ -10,8 +9,6 @@ class Schedule(models.Model):
     )
     date = models.DateTimeField()
     title = models.CharField(max_length=100)
-    # author = models.CharField(Teacher.full_name)
-    # author = models.ForeignKey(Teacher.full_name, on_delete=models.PROTECT)
     group = models.IntegerField(choices=GROUP)
 
     def __str__(self):
