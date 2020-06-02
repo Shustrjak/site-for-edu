@@ -42,11 +42,12 @@
         <li class=" list-group-item d-flex justify-content-between align-items-center">
             {{articles.title}}
             <span class="badge">
-                {% for key, value in article.TIME_TO_READ %}
+                <!--{% for key, value in article.TIME_TO_READ %}
                     {% if key == articles.time_to_read %}
                     <kbd>{{value}}</kbd>
                     {% endif %}
-                {% endfor %}
+                {% endfor %}-->
+                <kbd>{{ articles.get_time_to_read_display }}</kbd>
             </span>
         </li>
         {% endfor %}
