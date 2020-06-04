@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Schedule(models.Model):
     garden = 1
     farm = 2

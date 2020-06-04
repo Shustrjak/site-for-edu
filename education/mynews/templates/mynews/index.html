@@ -16,24 +16,24 @@
 <div>
     <h3>Таблица постов:</h3>
     <table class="table thead-light">
-      <thead>
+        <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Author</th>
-          <th scope="col">Title</th>
-          <th scope="col">Short text</th>
+            <th scope="col">ID</th>
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
+            <th scope="col">Short text</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         {% for articles in all_articles%}
         <tr>
-          <th scope="row">{{articles.id}}</th>
-          <td>{{ articles.author }}</td>
-          <td>{{ articles.title }}</td>
-          <td>{{ articles.short_text }}</td>
+            <th scope="row">{{articles.id}}</th>
+            <td>{{ articles.author }}</td>
+            <td>{{ articles.title }}</td>
+            <td>{{ articles.short_text }}</td>
         </tr>
         {%endfor%}
-      </tbody>
+        </tbody>
     </table>
 </div>
 <div>
