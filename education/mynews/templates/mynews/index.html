@@ -51,6 +51,25 @@
             </span>
         </li>
         {% endfor %}
+
+
+    </ul>
+</div>
+<div>
+
+    <ul class="list-group ul-width">
+        {% for authors in all_authors %}
+        <li class=" list-group-item d-flex justify-content-between align-items-center">
+            {{ authors.full_name }}
+            <span class="badge">
+
+                <kbd>{{ authors.email }}</kbd>
+
+            </span>
+        </li>
+        {% endfor %}
+
+
     </ul>
 </div>
 
