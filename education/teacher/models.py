@@ -14,6 +14,20 @@ class Teacher(models.Model):
         return self.full_name
 
 
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    teacher = models.ForeignKey(Teacher, on_delete=models.PROTECT)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
+
+    def short_description(self):
+        if len(self.description) > 30:
+            return f'{self.description[:30]}...'
+        return self.description
+
 class Lesson(models.Model):
     DS_1 = 1
     DS_2 = 2
