@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete article {% endblock title%}
+
+{% block content %}
+<h1>Delete Article</h1>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Delete</button>
+</form>
+
+
+{% endblock content %}

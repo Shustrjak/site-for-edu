@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} all news {% endblock title%}
+
+{% block content %}
+<div>
+    <h3>Таблица постов:</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Author</th>
+            <th scope="col">Title</th>
+            <th scope="col">Short text</th>
+            <th scope="col">TTR</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for articles in all_articles%}
+        <tr>
+            <th scope="row">{{articles.id}}</th>
+            <td>{{ articles.author }}</td>
+            <td>{{ articles.title }}</td>
+            <td>{{ articles.short_text }}</td>
+            <td><kbd>{{ articles.get_time_to_read_display }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</div>
+    {% endblock content %}

@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import teacher as class_based_views
+import mynews.views as function_views
 
 urlpatterns = [
+    # fb_views
+    path('fb_all_news/', function_views.all_articles),
+    path('fb_create_article/', function_views.create_article),
+    path('fb_delete_article/<int:pk>/', function_views.delete_article),
+    path('fb_edit_article/<int:pk>/', function_views.edit_article),
+    path('fb_show_article/<int:pk>/', function_views.show_article),
+
+    # default
+
     path('admin/', admin.site.urls),
     path('news/', include('mynews.urls')),
     path('teachers/', include('teacher.urls')),
