@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Create Teacher {% endblock title%}
+
+{% block content %}
 Teacher
-</body>
-</html>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Full name</th>
+            <th scope="col">E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for teachers in all_teachers%}
+        <tr>
+            <th scope="row">{{teachers.id}}</th>
+            <td>{{ teachers.full_name }}</td>
+            <td><kbd>{{ teachers.email }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+{% endblock content %}

@@ -26,3 +26,13 @@ class CreateTeacherView(View):
         if form.is_valid():
             form.save()
         return render(request, 'teacher/create_teacher_form.html', context={"form": form})
+
+
+class TeacherCreateView(CreateView):
+
+    model = Teacher
+    fields = '__all__'
+    success_url = '/cb_all_teachers/'
+
+    def get_success_url(self):
+        return f'/teacher_detail/{self.object.pk}'

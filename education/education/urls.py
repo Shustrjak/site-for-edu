@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 import mynews.views as function_views
 import mynews.views as class_based_views
-import teacher.t_views as class_based_views
+import teacher.views as based_views
 
 urlpatterns = [
     # fb_views
@@ -35,7 +35,7 @@ urlpatterns = [
     path('cb_author_list/', class_based_views.AuthorListView.as_view()),
 
     # cb Teacher, Course, Lesson
-    path('cb_create_teacher/', class_based_views.CreateTeacherView.as_view()),
+    path('cb_create_teacher/', based_views.CreateTeacherView.as_view()),
 
     # default
 
