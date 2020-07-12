@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} all news {% endblock title%}
+
+{% block content %}
+<div>
+    <h3>Таблица авторов:</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Author</th>
+            <th scope="col">Email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for author in authors%}
+        <tr>
+            <th scope="row">{{author.id}}</th>
+            <td>{{ author.full_name }}</td>
+            <td><kbd>{{ author.email }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+</div>
+    {% endblock content %}

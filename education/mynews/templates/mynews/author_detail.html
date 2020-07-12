@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} One author {% endblock title%}
+
+{% block content %}
+<h3>Author</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">{{author.id}}</th>
+            <td>{{ author.first_name }}</td>
+            <td>{{ author.last_name }}</td>
+            <td><kbd>{{ author.email }}</kbd></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+{% endblock content %}

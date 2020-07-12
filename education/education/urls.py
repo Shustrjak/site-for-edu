@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import mynews.views as function_views
+import mynews.views as class_based_views
+import teacher.t_views as class_based_views
 
 urlpatterns = [
     # fb_views
@@ -24,6 +26,16 @@ urlpatterns = [
     path('fb_delete_article/<int:pk>/', function_views.delete_article),
     path('fb_edit_article/<int:pk>/', function_views.edit_article),
     path('fb_show_article/<int:pk>/', function_views.show_article),
+
+    # cb_views
+    path('cb_create_author/', class_based_views.CreateAuthorView.as_view()),
+    path('cb_all_authors/', class_based_views.AllAuthorsTemplateView.as_view()),
+    path('cb_author_detail/<int:pk>/', class_based_views.AuthorDetailView.as_view()),
+    path('cb_create_author/', class_based_views.AuthorCreateView.as_view()),
+    path('cb_author_list/', class_based_views.AuthorListView.as_view()),
+
+    # cb Teacher, Course, Lesson
+    path('cb_create_teacher/', class_based_views.CreateTeacherView.as_view()),
 
     # default
 
