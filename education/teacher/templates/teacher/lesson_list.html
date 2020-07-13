@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} all news {% endblock title%}
+
+{% block content %}
+<div>
+    <h3>Таблица авторов:</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Teacher</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for lesson in lessons%}
+        <tr>
+            <th scope="row">{{lesson.id}}</th>
+            <td>{{ lesson.title }}</td>
+            <td><kbd>{{ lesson.teacher }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link " href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+            </li>
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+
+</div>
+    {% endblock content %}

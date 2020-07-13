@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} All Teachers{% endblock title%}
+
+{% block content %}
+<div>
+    <h3>Таблица преподавателей:</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Author</th>
+            <th scope="col">Email</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for teacher in teachers %}
+        <tr>
+            <th scope="row">{{teacher.id}}</th>
+            <td>{{ teacher.full_name }}</td>
+            <td><kbd>{{ teacher.email }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock content %}

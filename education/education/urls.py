@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import mynews.views as function_views
-import mynews.views as class_based_views
-import teacher.views as based_views
+import mynews.views as news_views
+import teacher.views as teacher_views
 
 urlpatterns = [
     # fb_views
@@ -28,14 +28,35 @@ urlpatterns = [
     path('fb_show_article/<int:pk>/', function_views.show_article),
 
     # cb_views
-    path('cb_create_author/', class_based_views.CreateAuthorView.as_view()),
-    path('cb_all_authors/', class_based_views.AllAuthorsTemplateView.as_view()),
-    path('cb_author_detail/<int:pk>/', class_based_views.AuthorDetailView.as_view()),
-    path('cb_create_author/', class_based_views.AuthorCreateView.as_view()),
-    path('cb_author_list/', class_based_views.AuthorListView.as_view()),
+    path('cb_create_author/', news_views.CreateAuthorView.as_view()),
+    path('cb_all_authors/', news_views.AllAuthorsTemplateView.as_view()),
+    path('cb_author_detail/<int:pk>/', news_views.AuthorDetailView.as_view()),
+    path('cb_delete_author/', news_views.AuthorCreateView.as_view()),
+    path('cb_author_list/', news_views.AuthorListView.as_view()),
 
-    # cb Teacher, Course, Lesson
-    path('cb_create_teacher/', based_views.CreateTeacherView.as_view()),
+    # cb Teacher
+    path('teacher_create/', teacher_views.CreateTeacherView.as_view()),
+    path('all_teachers/', teacher_views.AllTeacherTemplateView.as_view()),
+    path('teacher_detail/<int:pk>/', teacher_views.TeacherDetailView.as_view()),
+    path('teacher_upd/<int:pk>/', teacher_views.TeacherUpdateView.as_view()),
+    path('teacher_list/', teacher_views.TeacherListView.as_view()),
+    path('teacher_delete/<int:pk>/', teacher_views.TeacherDeleteView.as_view()),
+    # cb Lesson
+    path('lesson_create/', teacher_views.CreateLessonView.as_view()),
+    path('all_lessons/', teacher_views.AllLessonTemplateView.as_view()),
+    path('lesson_detail/<int:pk>/', teacher_views.LessonDetailView.as_view()),
+    path('lesson_upd/<int:pk>/', teacher_views.LessonUpdateView.as_view()),
+    path('lesson_list/', teacher_views.LessonListView.as_view()),
+    path('lesson_delete/<int:pk>/', teacher_views.LessonDeleteView.as_view()),
+    # cb Course
+    path('course_create/', teacher_views.CreateCourseView.as_view()),
+    path('all_courses/', teacher_views.AllCourseTemplateView.as_view()),
+    path('course_detail/<int:pk>/', teacher_views.CourseDetailView.as_view()),
+    path('course_upd/<int:pk>/', teacher_views.CourseUpdateView.as_view()),
+    path('course_list/', teacher_views.CourseListView.as_view()),
+    path('course_delete/<int:pk>/', teacher_views.CourseDeleteView.as_view()),
+
+
 
     # default
 

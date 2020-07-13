@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} All Lessons{% endblock title%}
+
+{% block content %}
+<div>
+    <h3>Таблица уроков:</h3>
+    <table class="table thead-light">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">title </th>
+            <th scope="col">body</th>
+            <th scope="col">teacher</th>
+            <th scope="col">ts_created</th>
+            <th scope="col">ts_last_changed</th>
+            <th scope="col">difficult</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for lesson in lessons %}
+        <tr>
+            <th scope="row">{{lesson.id}}</th>
+            <td>{{ lesson.title }}</td>
+            <td>{{ lesson.body }}</td>
+            <td>{{ lesson.teacher }}</td>
+            <td>{{ lesson.ts_created }}</td>
+            <td>{{ lesson.ts_last_changed }}</td>
+            <td><kbd>{{ lesson.get_difficult_display }}</kbd></td>
+
+        </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+</div>
+    {% endblock content %}
