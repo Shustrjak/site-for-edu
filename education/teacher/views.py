@@ -28,6 +28,7 @@ class CreateTeacherView(View):
             form.save()
         return render(request, 'teacher/teacher_create.html', context={"form": form})
 
+
 # all_teachers.html
 class AllTeacherTemplateView(TemplateView):
     template_name = 'teacher/all_teachers.html'
@@ -38,20 +39,21 @@ class AllTeacherTemplateView(TemplateView):
         context.update({"teachers": teachers})
         return context
 
+
 # teacher_detail.html
 class TeacherDetailView(DetailView):
-
     model = Teacher
+
 
 # teacher_form.html
 class TeacherUpdateView(UpdateView):
-
     model = Teacher
     fields = '__all__'
     success_url = '/all_teachers/'
 
     def get_success_url(self):
         return f'/teacher_detail/{self.object.pk}'
+
 
 # teacher_list.html
 class TeacherListView(ListView):
@@ -59,15 +61,16 @@ class TeacherListView(ListView):
     context_object_name = 'teachers'
     paginate_by = 5
 
+
 # teacher_confirm_delete.html
 class TeacherDeleteView(DeleteView):
-
     model = Teacher
     fields = '__all__'
     success_url = '/all_teachers/'
 
     def get_success_url(self):
         return f'/teacher_detail/{self.object.pk}'
+
 
 # LESSON
 # Create lesson
@@ -83,6 +86,7 @@ class CreateLessonView(View):
             form.save()
         return render(request, 'teacher/lesson_create.html', context={"form": form})
 
+
 # all_lessons.html
 class AllLessonTemplateView(TemplateView):
     template_name = 'teacher/all_lessons.html'
@@ -93,14 +97,14 @@ class AllLessonTemplateView(TemplateView):
         context.update({"lessons": lessons})
         return context
 
+
 # lesson_detail.html
 class LessonDetailView(DetailView):
-
     model = Lesson
+
 
 # lesson_form.html
 class LessonUpdateView(UpdateView):
-
     model = Lesson
     fields = '__all__'
     success_url = '/all_lessons/'
@@ -118,7 +122,6 @@ class LessonListView(ListView):
 
 # lesson_confirm_delete.html
 class LessonDeleteView(DeleteView):
-
     model = Lesson
     fields = '__all__'
     context_object_name = 'lessons'
@@ -134,6 +137,7 @@ class LessonDeleteView(DeleteView):
     def get_success_url(self):
         return '/all_lessons/'
 
+
 # Course
 # Create course
 class CreateCourseView(View):
@@ -148,6 +152,7 @@ class CreateCourseView(View):
             form.save()
         return render(request, 'teacher/course_create.html', context={"form": form})
 
+
 # all_courses.html
 class AllCourseTemplateView(TemplateView):
     template_name = 'teacher/all_courses.html'
@@ -158,14 +163,14 @@ class AllCourseTemplateView(TemplateView):
         context.update({"courses": courses})
         return context
 
+
 # course_detail.html
 class CourseDetailView(DetailView):
-
     model = Course
+
 
 # course_form.html
 class CourseUpdateView(UpdateView):
-
     model = Course
     fields = '__all__'
     success_url = '/all_courses/'
@@ -183,16 +188,13 @@ class CourseListView(ListView):
 
 # course_confirm_delete.html
 class CourseDeleteView(DeleteView):
-
     model = Course
     fields = 'id'
     context_object_name = 'courses'
     success_url = '/all_courses/'
 
-
     def get_success_url(self):
         return '/all_courses/'
-
 
     def post(self, request, pk):
         form = CourseForm(request.POST)

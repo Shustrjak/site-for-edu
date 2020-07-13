@@ -56,8 +56,6 @@ urlpatterns = [
     path('course_list/', teacher_views.CourseListView.as_view()),
     path('course_delete/<int:pk>/', teacher_views.CourseDeleteView.as_view()),
 
-
-
     # default
 
     path('admin/', admin.site.urls),

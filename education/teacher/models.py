@@ -28,6 +28,7 @@ class Course(models.Model):
             return f'{self.description[:30]}...'
         return self.description
 
+
 class Lesson(models.Model):
     DS_1 = 1
     DS_2 = 2

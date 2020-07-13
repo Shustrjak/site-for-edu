@@ -4,23 +4,23 @@
 
 {% block content %}
 Teachers:
-    <table class="table thead-light">
-        <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Full name</th>
-            <th scope="col">E-mail</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for teachers in all_teachers%}
-        <tr>
-            <th scope="row">{{teachers.id}}</th>
-            <td>{{ teachers.full_name }}</td>
-            <td><kbd>{{ teachers.email }}</kbd></td>
+<table class="table thead-light">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Full name</th>
+        <th scope="col">E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for teachers in all_teachers%}
+    <tr>
+        <th scope="row">{{teachers.id}}</th>
+        <td>{{ teachers.full_name }}</td>
+        <td><kbd>{{ teachers.email }}</kbd></td>
 
-        </tr>
-        {%endfor%}
-        </tbody>
-    </table>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
 {% endblock content %}
