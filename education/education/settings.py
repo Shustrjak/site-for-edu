@@ -11,6 +11,21 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from .passmail import server, email, password
+'''
+В дериктории, где лежит settings.py создать файл: passmail.py
+В файле passmail.py создаем три свойства:
+email = 'EMAIL- админа'
+server = 'SMTP-севрер'
+password = 'PASSWORD почты админа'
+Пример:
+email = 'example@example.com'
+server = 'smtp.example.com'
+password = 'PASSWORD_for_email'
+
+'''
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,6 +55,7 @@ INSTALLED_APPS = [
     'mynews.apps.MynewsConfig',
     'teacher.apps.TeacherConfig',
     'schedule.apps.ScheduleConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +140,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = server  # smtp.example.com
+'''
+ в поле: ВАШ_EMAIL указывается полный email, типа: example@example.com.
+Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ
+в исходном коде предыдущего пункта
+'''
+EMAIL_HOST_USER = email
+
+EMAIL_HOST_PASSWORD = password  # пароль от email

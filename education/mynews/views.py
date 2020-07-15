@@ -15,7 +15,7 @@ def index_view(request):
         'author': author,
         'all_authors': Author.objects.all(),
     }
-    return render(request, 'mynews/index.html', context=context)
+    return render(request, 'mynews/contact.html', context=context)
 
 
 def all_articles(request):

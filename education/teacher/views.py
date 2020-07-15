@@ -13,7 +13,7 @@ def index_view(request):
         'all_teachers': Teacher.objects.all(),
     }
 
-    return render(request, 'teacher/index.html', context=context)
+    return render(request, 'teacher/contact.html', context=context)
 
 
 class CreateTeacherView(View):
@@ -113,6 +113,7 @@ class LessonUpdateView(UpdateView):
         return f'/lesson_detail/{self.object.pk}'
 
 
+
 # lesson_list.html
 class LessonListView(ListView):
     model = Lesson
@@ -189,12 +190,13 @@ class CourseListView(ListView):
 # course_confirm_delete.html
 class CourseDeleteView(DeleteView):
     model = Course
-    fields = 'id'
-    context_object_name = 'courses'
+    fields = '__all__'
     success_url = '/all_courses/'
 
-    def get_success_url(self):
-        return '/all_courses/'
+    def get_success_url(self, request, pk):
+        course = Course.objects.filter(pk=pk).first()
+        form = CourseForm(instance=course)
+        return render(request, 'teacher/course_confirm_delete.html', context={"form": form})
 
     def post(self, request, pk):
         form = CourseForm(request.POST)

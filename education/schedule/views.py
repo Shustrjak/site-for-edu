@@ -8,4 +8,4 @@ def index_view(request):
         'schedule': schedule,
         'all_schedules': Schedule.objects.all(),
     }
-    return render(request, 'schedule/index.html', context=context)
+    return render(request, 'schedule/contact.html', context=context)

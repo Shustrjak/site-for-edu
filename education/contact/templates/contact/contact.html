@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title%}form{% endblock %}
+{% block content%}
+
+<h3>FeedbackForm</h3>
+<form action="/contact/" method="post">
+  {% csrf_token %}
+    {{ form.non_field_errors }}
+	<div>
+	  <label for="id_input_name">Имя:</label>
+	  {{ form.input_name.errors }}
+	  {{ form.input_name }}
+	</div>
+	<div>
+	  <label for="id_input_mail">E-mail:</label>
+	  {{ form.input_mail.errors }}
+	  {{ form.input_mail }}
+	</div>
+	<div>
+	  <label for="id_input_text">Сообщение:</label>
+	  {{ form.input_text.errors }}
+	  {{ form.input_text }}
+	</div>
+	<div>
+	  {{ form.copy.errors }}
+	  <label for="id_copy">{{ form.copy }} Отправить копию себе </label>
+	</div>
+	<input type="submit" value="Отправить"/>
+</form>
+{% endblock %}
