@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+'''
+импортируем файл с данными для отправки писем:
+'''
 from .passmail import server, email, password
 '''
 В дериктории, где лежит settings.py создать файл: passmail.py
@@ -143,12 +146,16 @@ STATICFILES_DIRS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = server  # smtp.example.com
+
 '''
- в поле: ВАШ_EMAIL указывается полный email, типа: example@example.com.
-Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ
-в исходном коде предыдущего пункта
+данные хранятся в passmail.py
+EMAIL_HOST- хост вашей почты, пример: smtp.example.com
+EMAIL_HOST_USER - ваша почта, типа: example@example.com
+EMAIL_HOST_PASSWORD - пароль от почты
+
+Gmail.com не дает возможности авторизоваться, потому что считает, то это авторизуется робот
 '''
+EMAIL_HOST = server
 EMAIL_HOST_USER = email
 
-EMAIL_HOST_PASSWORD = password  # пароль от email
+EMAIL_HOST_PASSWORD = password
