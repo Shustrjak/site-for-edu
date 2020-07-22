@@ -11,11 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
 '''
-импортируем файл с данными для отправки писем:
-'''
-from .passmail import server, email, password
-'''
+Импортируем файл с данными для отправки писем:
 В дериктории, где лежит settings.py создать файл: passmail.py
 В файле passmail.py создаем три свойства:
 email = 'EMAIL- админа'
@@ -25,14 +23,11 @@ password = 'PASSWORD почты админа'
 email = 'example@example.com'
 server = 'smtp.example.com'
 password = 'PASSWORD_for_email'
-
 '''
-
-
+from ..education.passmail import server, email, password
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -44,7 +39,6 @@ SECRET_KEY = 'f^su3b30f2vbi*c+6@+ho!djcw5wm$j!zpc&1bl$1r-7@7ro9y'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -91,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'education.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -101,7 +94,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -121,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -135,7 +126,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -147,14 +137,6 @@ STATICFILES_DIRS = [
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 
-'''
-данные хранятся в passmail.py
-EMAIL_HOST- хост вашей почты, пример: smtp.example.com
-EMAIL_HOST_USER - ваша почта, типа: example@example.com
-EMAIL_HOST_PASSWORD - пароль от почты
-
-Gmail.com не дает возможности авторизоваться, потому что считает, то это авторизуется робот
-'''
 EMAIL_HOST = server
 EMAIL_HOST_USER = email
 

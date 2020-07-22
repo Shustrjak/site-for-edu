@@ -2,14 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import FeedbackForm
-from rq.decorators import job
-from redis import Redis
-from education.passmail import email  # инструкция в settings.py
+from ..education.passmail import email  # инструкция в settings.py
 
-# queue = Queue(connection=Redis())
-@job("default", connection=Redis())
+
 def contact_view(request):
-
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -22,6 +18,7 @@ def contact_view(request):
 
             if copy:
                 recipients.append(input_mail)
+
             try:
                 send_mail(input_name, input_text, email, recipients)
                 form.save()
@@ -34,7 +31,3 @@ def contact_view(request):
         form = FeedbackForm()
 
     return render(request, 'contact/contact.html', {'form': form})
-
-
-# job = queue.enqueue(contact_view, 'contact/contact.html')
-print(job)
