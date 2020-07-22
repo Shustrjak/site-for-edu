@@ -18,7 +18,6 @@ from django.urls import path, include
 import mynews.views as function_views
 import mynews.views as news_views
 import teacher.views as teacher_views
-# import contact.views as contact_views
 
 
 urlpatterns = [
@@ -58,14 +57,11 @@ urlpatterns = [
     path('course_list/', teacher_views.CourseListView.as_view()),
     path('course_delete/<int:pk>/', teacher_views.CourseDeleteView.as_view()),
 
-    # contacts.html
-    # path('contact/contact.html', contact_views.FeedbackForm.contact_view),
-    # default
 
     path('admin/', admin.site.urls),
     path('news/', include('mynews.urls')),
     path('teachers/', include('teacher.urls')),
     path('schedule/', include('schedule.urls')),
-    path('contact/', include('contact.urls')),
+    path('contact/', include('contact.urls'))
 
 ]

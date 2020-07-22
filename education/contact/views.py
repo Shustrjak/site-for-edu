@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from .forms import FeedbackForm
-from ..education.passmail import email  # инструкция в settings.py
+from education.passmail import email  # инструкция в settings.py
 
 
 def contact_view(request):

@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from .passmail import server, email, password
 
-'''
+''' ^^^^^^
 Импортируем файл с данными для отправки писем:
 В дериктории, где лежит settings.py создать файл: passmail.py
 В файле passmail.py создаем три свойства:
@@ -24,7 +25,6 @@ email = 'example@example.com'
 server = 'smtp.example.com'
 password = 'PASSWORD_for_email'
 '''
-from ..education.passmail import server, email, password
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -136,8 +136,6 @@ STATICFILES_DIRS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-
 EMAIL_HOST = server
 EMAIL_HOST_USER = email
-
 EMAIL_HOST_PASSWORD = password
