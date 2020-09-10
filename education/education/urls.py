@@ -14,44 +14,47 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+
 import mynews.views as function_views
 import mynews.views as news_views
 import teacher.views as teacher_views
-
+from django.urls import path, include
+# from graphene_django.views import GraphQLView
+#
+# from .schema import schema
 
 urlpatterns = [
     # fb_views
-    path('fb_all_news/', function_views.all_articles),
-    path('fb_create_article/', function_views.create_article),
-    path('fb_delete_article/<int:pk>/', function_views.delete_article),
-    path('fb_edit_article/<int:pk>/', function_views.edit_article),
-    path('fb_show_article/<int:pk>/', function_views.show_article),
+    path('news/', function_views.all_articles),
+    path('create_article/', function_views.create_article),
+    path('delete_article/<int:pk>/', function_views.delete_article),
+    path('edit_article/<int:pk>/', function_views.edit_article),
+    path('show_article/<int:pk>/', function_views.show_article),
 
     # cb_views
-    path('cb_create_author/', news_views.CreateAuthorView.as_view()),
-    path('cb_all_authors/', news_views.AllAuthorsTemplateView.as_view()),
-    path('cb_author_detail/<int:pk>/', news_views.AuthorDetailView.as_view()),
-    path('cb_delete_author/', news_views.AuthorCreateView.as_view()),
-    path('cb_author_list/', news_views.AuthorListView.as_view()),
+    path('create_author/', news_views.CreateAuthorView.as_view()),
+    path('authors/', news_views.AllAuthorsTemplateView.as_view()),
+    path('author_detail/<int:pk>/', news_views.AuthorDetailView.as_view()),
+    path('delete_author/', news_views.AuthorCreateView.as_view()),
+    path('author_list/', news_views.AuthorListView.as_view()),
 
     # cb Teacher
     path('teacher_create/', teacher_views.CreateTeacherView.as_view()),
-    path('all_teachers/', teacher_views.AllTeacherTemplateView.as_view()),
+    path('teachers/', teacher_views.AllTeacherTemplateView.as_view()),
     path('teacher_detail/<int:pk>/', teacher_views.TeacherDetailView.as_view()),
     path('teacher_upd/<int:pk>/', teacher_views.TeacherUpdateView.as_view()),
     path('teacher_list/', teacher_views.TeacherListView.as_view()),
     path('teacher_delete/<int:pk>/', teacher_views.TeacherDeleteView.as_view()),
     # cb Lesson
     path('lesson_create/', teacher_views.CreateLessonView.as_view()),
-    path('all_lessons/', teacher_views.AllLessonTemplateView.as_view()),
+    path('lessons/', teacher_views.AllLessonTemplateView.as_view()),
     path('lesson_detail/<int:pk>/', teacher_views.LessonDetailView.as_view()),
     path('lesson_upd/<int:pk>/', teacher_views.LessonUpdateView.as_view()),
     path('lesson_list/', teacher_views.LessonListView.as_view()),
     path('lesson_delete/<int:pk>/', teacher_views.LessonDeleteView.as_view()),
     # cb Course
     path('course_create/', teacher_views.CreateCourseView.as_view()),
-    path('all_courses/', teacher_views.AllCourseTemplateView.as_view()),
+    path('courses/', teacher_views.AllCourseTemplateView.as_view()),
     path('course_detail/<int:pk>/', teacher_views.CourseDetailView.as_view()),
     path('course_upd/<int:pk>/', teacher_views.CourseUpdateView.as_view()),
     path('course_list/', teacher_views.CourseListView.as_view()),
@@ -59,9 +62,12 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-    path('news/', include('mynews.urls')),
-    path('teachers/', include('teacher.urls')),
-    path('schedule/', include('schedule.urls')),
-    path('contact/', include('contact.urls'))
+    path('contact/', include('contact.urls')),
+    path('api-token/', include('tokenauthapp.urls')),
+    path('api-oauth/', include('oauthapp.urls')),
+    path('django-rq/', include('django_rq.urls')),
+
+    # path('graphql/', GraphQLView.as_view(graphql=True, schema=schema))
+
 
 ]

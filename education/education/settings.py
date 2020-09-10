@@ -53,6 +53,17 @@ INSTALLED_APPS = [
     'teacher.apps.TeacherConfig',
     'schedule.apps.ScheduleConfig',
     'contact.apps.ContactConfig',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'tokenauthapp.apps.TokenauthappConfig',
+    'oauth2_provider',
+    'oauthapp.apps.OauthappConfig',
+    "django_rq",
+    "frontend",
+    # "gql.apps.GqlConfig",
+    # "graphene_django",
+
+
 ]
 
 MIDDLEWARE = [
@@ -139,3 +150,37 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = server
 EMAIL_HOST_USER = email
 EMAIL_HOST_PASSWORD = password
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework.permissions.IsAuthenticated',
+
+
+    ]
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope',
+        'groups': 'Access to your groups',
+    }
+}
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'PASSWORD': '',
+        'DEFAULT_TIMEOUT': 360,
+    }
+}
+
+RQ_EXCEPTION_HANDLERS = ['path.to.my.handler'] # If you need custom exception handlers

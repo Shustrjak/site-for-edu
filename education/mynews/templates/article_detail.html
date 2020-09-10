@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %} Show article {% endblock title%}
 
 {% block content %}
@@ -9,5 +9,5 @@
     {{form.as_p}}
 </form>
 
-
+<script src="{% static 'frontend/index.js' %}"></script>
 {% endblock content %}
